@@ -5,6 +5,7 @@ import (
 	"catdogs-be/libs"
 	"catdogs-be/logging"
 	pb "catdogs-be/pb"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -37,6 +38,11 @@ func Login(c *gin.Context) {
 	})
 	if err != nil {
 		logging.Error("Call Login err: ", err)
+		libs.Resp(libs.R{
+			C:    c,
+			Code: -999,
+		})
+		return
 	}
 	libs.Resp(libs.R{
 		C:    c,

@@ -37,7 +37,14 @@ func Register(c *gin.Context) {
 		Email:    user.Email,
 		Password: user.Password,
 	})
-	logging.Info("Call Regist Err: ", err)
+	if err != nil {
+		logging.Error("Call Regist err: ", err)
+		libs.Resp(libs.R{
+			C:    c,
+			Code: -999,
+		})
+		return
+	}
 	libs.Resp(libs.R{
 		C:    c,
 		Code: int(rsp.Rsp.Code),
