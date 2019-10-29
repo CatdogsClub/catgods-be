@@ -27,25 +27,21 @@
                 "summary": "登录接口",
                 "parameters": [
                     {
-                        "type": "string",
-                        "description": "邮箱账号",
-                        "name": "email",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "密码",
-                        "name": "password",
-                        "in": "formData",
-                        "required": true
+                        "description": "Login Params",
+                        "name": "params",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/user.User"
+                        }
                     }
                 ],
                 "responses": {
                     "0": {
-                        "description": "{\"code\": 0, \"data\": {}, \"msg\": \"success\"}",
                         "schema": {
-                            "type": "string"
+                            "type": "object",
+                            "$ref": "#/definitions/libs.R"
                         }
                     },
                     "1002": {
@@ -84,25 +80,21 @@
                 "summary": "注册接口",
                 "parameters": [
                     {
-                        "type": "string",
-                        "description": "邮箱账号",
-                        "name": "email",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "密码",
-                        "name": "password",
-                        "in": "formData",
-                        "required": true
+                        "description": "Register Params",
+                        "name": "params",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/user.User"
+                        }
                     }
                 ],
                 "responses": {
                     "0": {
-                        "description": "{\"code\": 0, \"data\": {}, \"msg\": \"success\"}",
                         "schema": {
-                            "type": "string"
+                            "type": "object",
+                            "$ref": "#/definitions/libs.R"
                         }
                     },
                     "1000": {
@@ -135,32 +127,21 @@
                 "summary": "发布文章",
                 "parameters": [
                     {
-                        "type": "string",
-                        "description": "标题",
-                        "name": "title",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "内容",
-                        "name": "content",
-                        "in": "formData",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "作者",
-                        "name": "author",
-                        "in": "formData",
-                        "required": true
+                        "description": "SetPost Params",
+                        "name": "params",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/post.SetPost"
+                        }
                     }
                 ],
                 "responses": {
                     "0": {
-                        "description": "{\"code\": 0, \"data\": {}, \"msg\": \"success\"}",
                         "schema": {
-                            "type": "string"
+                            "type": "object",
+                            "$ref": "#/definitions/libs.R"
                         }
                     },
                     "3000": {
@@ -175,6 +156,56 @@
                             "type": "string"
                         }
                     }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "libs.R": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
+        "post.SetPost": {
+            "type": "object",
+            "required": [
+                "author",
+                "content",
+                "title"
+            ],
+            "properties": {
+                "author": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.User": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
                 }
             }
         }

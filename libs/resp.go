@@ -7,7 +7,7 @@ import (
 )
 
 type R struct {
-	C    *gin.Context
+	C    *gin.Context `json:"-"`
 	Code int
 	Msg  string
 	Data gin.H

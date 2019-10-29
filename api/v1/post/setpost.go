@@ -5,6 +5,7 @@ import (
 	"catdogs-be/libs"
 	"catdogs-be/logging"
 	pb "catdogs-be/pb"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,10 +14,8 @@ import (
 // @Description 发布文章
 // @Accept  json
 // @Produce  json
-// @Param title formData string true "标题"
-// @Param content formData string true "内容"
-// @Param author formData string true "作者"
-// @Success 0 {string} string "{"code": 0, "data": {}, "msg": "success"}"
+// @Param params body post.SetPost true "SetPost Params"
+// @Success 0 {object} libs.R
 // @Failure -999 {string} string "服务器出问题"
 // @Failure -3000 {string} string "参数错误"
 // @Router /setpost [post]

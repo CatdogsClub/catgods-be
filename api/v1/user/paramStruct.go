@@ -1,12 +1,12 @@
 package user
 
 type User struct {
-	Email    string `form:"email" binding:"email"`
-	Password string `form:"password"`
+	Email    string `json:"email" binding:"email" validate:"required"`
+	Password string `json:"password" validate:"required"`
 }
 
 type ProfileParam struct {
-	Profile *Profile `form:"profile" json:"profile"`
+	Profile *Profile `form:"profile" json:"profile" validate:"required"`
 }
 
 type Profile struct {

@@ -14,9 +14,8 @@ import (
 // @Description 登录接口
 // @Accept  json
 // @Produce  json
-// @Param email formData string true "邮箱账号"
-// @Param password formData string true "密码"
-// @Success 0 {string} string "{"code": 0, "data": {}, "msg": "success"}"
+// @Param params body user.User true "Login Params"
+// @Success 0 {object} libs.R
 // @Failure -999 {string} string "服务器出问题"
 // @Failure -1002 {string} string "用户不存在"
 // @Failure -1003 {string} string "密码错误"
